@@ -1,3 +1,6 @@
+# Backend specific gitignore
 node_modules/
 .env
-.DS_Store
+*.log
+uploads/
+temp/
