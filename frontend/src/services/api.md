@@ -1,10 +1,7 @@
-this is a **perfect frontend API service layer** built with **Axios** for your React-based Task Manager app.
+**perfect frontend API service layer** built with **Axios** for your React-based Task Manager app.
 
-This file cleanly separates **backend communication** logic from your **UI components**, which is exactly what professional React developers do.
+This file cleanly separates **backend communication** logic from your **UI components**
 
-Let’s break it down clearly so you understand every piece and how to use it inside your frontend.
-
----
 
 ## 🧠 **Purpose**
 

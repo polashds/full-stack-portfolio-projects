@@ -1,4 +1,4 @@
-Perfect 👍 — this code defines a **controller function** for fetching all tasks from MongoDB using Mongoose.
+**controller function** for fetching all tasks from MongoDB using Mongoose.
 
 ## 🧠 **What This Code Does**
 

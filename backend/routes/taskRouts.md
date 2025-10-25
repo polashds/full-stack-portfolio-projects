@@ -1,7 +1,3 @@
-Sure — let’s go through your Express router code **line by line**, so you understand exactly what it’s doing 👇
-
----
-
 ### 📘 1. Import Express and Create a Router
 
 ```js
