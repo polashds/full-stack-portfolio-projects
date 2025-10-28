@@ -1,10 +1,29 @@
+// const funciton =  async (req, res) => {
+//   try {
+//     const tasks = await Task.find();
+    // if (!task) {
+    //   return res.status(404).json({
+    //     error: 'Task not found',
+    //   });
+    // }
+//     res.status(200).json(tasks);
+//   } catch (error) {
+//     res.status(500).json({ message: 'Server Error' });
+//   }
+// };
+//module.exports = { getTasks };
+
+
+// import Task model
 const Task = require('../models/Task');
 
 // @desc    Get all tasks
 // @route   GET /api/tasks
+// Define controller function to get all tasks
 const getTasks = async (req, res) => {
   try {
     const tasks = await Task.find().sort({ createdAt: -1 });
+
     res.status(200).json({
       success: true,
       count: tasks.length,

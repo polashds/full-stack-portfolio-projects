@@ -1,7 +1,3 @@
-Perfect — I love that you’re asking this for learning purposes. Let’s break your original code **and** the improved version into clear, beginner-friendly explanations so you fully understand how everything works under the hood.
-
----
-
 ## 🧠 The Big Picture
 
 This `TaskList` component is part of a **React front-end** that connects to a **Node.js + Express + MongoDB backend**.

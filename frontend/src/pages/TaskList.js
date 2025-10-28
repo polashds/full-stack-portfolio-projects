@@ -1,24 +1,35 @@
+// const TaskList = () => {
+//   return ();
+// };
+// export default TaskList;
 
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+// import necessary libraries and components
+import React, { useState, useEffect } from 'react'; 
+import { Link } from 'react-router-dom'; //used for navigation (no full page reload)
 import { taskAPI } from '../services/api';
 import './TaskList.css';
 
-const TaskList = () => {
-  const [tasks, setTasks] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
+// TaskList component to display and manage tasks
+const TaskList = () => {
+  // State variables
+  const [tasks, setTasks] = useState([]); // fetched from your backend.
+  const [loading, setLoading] = useState(true); // currently fetching data
+  const [error, setError] = useState(null); //if an API call fails, this will store the message.
+
+  //Fetching Tasks When the Page Loads
   useEffect(() => {
     fetchTasks();
   }, []);
 
+
+  // Function to fetch tasks from the backend
   const fetchTasks = async () => {
     try {
-      setLoading(true);
-      const response = await taskAPI.getAllTasks();
-      setTasks(response.data);
-      setError(null);
+      setLoading(true); //show a loading spinner or text
+      const response = await taskAPI.getAllTasks(); //API call to get tasks
+      setTasks(response.data); //stores fetched data in state
+      setError(null); //clear any previous errors
     } catch (err) {
       setError('Failed to fetch tasks');
       console.error(err);
@@ -27,16 +38,22 @@ const TaskList = () => {
     }
   };
 
+
+  // Function to handle task deletion
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this task?')) {
       try {
-        await taskAPI.deleteTask(id);
+        await taskAPI.deleteTask(id); //API call to delete task
         fetchTasks(); // Refresh list
       } catch (err) {
         alert('Failed to delete task');
       }
     }
   };
+
+  // Helper functions to get badge colors
+  // const getStatusColor = (status) => { ... }
+  // const getPriorityColor = (priority) => { ... }
 
   const getStatusColor = (status) => {
     switch (status) {
@@ -49,6 +66,8 @@ const TaskList = () => {
     }
   };
 
+
+  // Helper function to get priority badge colors
   const getPriorityColor = (priority) => {
     switch (priority) {
       case 'high':
@@ -60,9 +79,12 @@ const TaskList = () => {
     }
   };
 
+
+  // Render the UI component
   if (loading) return <div className="loading">Loading tasks...</div>;
   if (error) return <div className="error">{error}</div>;
 
+  // Main UI
   return (
     <div className="task-list-container">
       <div className="header">
