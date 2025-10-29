@@ -1,10 +1,4 @@
-Excellent, Polash 👏
-
 This `TaskForm` component is a **beautifully structured React form** that lets you **create new tasks** or **edit existing ones** using the same component — just by toggling the `isEdit` prop.
-
-Let’s go through it step by step so you understand **every piece** deeply — not just what it does, but *why* it’s done that way.
-
----
 
 ## 🧠 **The Big Picture**
 

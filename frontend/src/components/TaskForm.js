@@ -1,12 +1,16 @@
+
+// import necessary modules and components
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { taskAPI } from '../services/api';
 import './TaskForm.css';
 
+// TaskForm component for creating and editing tasks
 const TaskForm = ({ isEdit }) => {
   const navigate = useNavigate();
   const { id } = useParams();
 
+  // State for form data
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -15,9 +19,11 @@ const TaskForm = ({ isEdit }) => {
     dueDate: '',
   });
 
+  // State for loading and error handling
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  // Fetch task details if in edit mode
   useEffect(() => {
     // Move fetchTask function inside useEffect
     const fetchTask = async () => {
@@ -35,12 +41,14 @@ const TaskForm = ({ isEdit }) => {
         setError('Failed to fetch task');
       }
     };
-
+    
+    // Call fetchTask only if in edit mode
     if (isEdit && id) {
       fetchTask();
     }
   }, [isEdit, id]); // ← Now this is correct!
 
+  // Function to handle form input changes
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -48,11 +56,13 @@ const TaskForm = ({ isEdit }) => {
     });
   };
 
+  // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
 
+    // Validate required fields
     try {
       if (isEdit) {
         await taskAPI.updateTask(id, formData);

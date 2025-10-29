@@ -65,7 +65,8 @@ Each card shows:
 * **Badges** for *status* and *priority* (with different colors)
 * **Description**
 * **Due date** (if available)
-* **Edit** and **Delete** buttons
+* **Edit** and 
+* **Delete** buttons
 
 Example:
 
