@@ -20,10 +20,10 @@ const TaskList = () => {
   //Fetching Tasks When the Page Loads
   useEffect(() => {
     fetchTasks();
-  }, []);
+  }, []); //`[]`** means this runs **only once** (like `componentDidMount` in class components).
 
 
-  // Function to fetch tasks from the backend
+  // Function to fetch tasks from the backend try->catch->finally
   const fetchTasks = async () => {
     try {
       setLoading(true); //show a loading spinner or text
@@ -51,7 +51,7 @@ const TaskList = () => {
     }
   };
 
-  // Helper functions to get badge colors
+  // Helper functions to get badge status colors, priority colors
   // const getStatusColor = (status) => { ... }
   // const getPriorityColor = (priority) => { ... }
 

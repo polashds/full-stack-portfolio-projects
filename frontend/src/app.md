@@ -1,8 +1,4 @@
-Perfect — this is the **main React app setup** that connects everything together using **React Router**, which allows your app to have **multiple pages (routes)** without reloading the page.
-
-Let’s go step by step 👇
-
----
+**main React app setup** that connects everything together using **React Router**, which allows your app to have **multiple pages (routes)** without reloading the page.
 
 ## 🧠 Overall Idea
 
@@ -31,9 +27,7 @@ import './App.css';
 ```
 
 * `React`: Needed because we’re writing JSX.
-* `BrowserRouter`, `Routes`, `Route`:
-
-  * Components from `react-router-dom` library that control page navigation.
+* `BrowserRouter`, `Routes`, `Route`: * Components from `react-router-dom` library that control page navigation.
 * `TaskList`: Page that lists all your tasks.
 * `TaskForm`: The form for creating or editing a task.
 * `'./App.css'`: Contains your styling.

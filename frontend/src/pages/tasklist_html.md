@@ -65,8 +65,8 @@ Each card shows:
 * **Badges** for *status* and *priority* (with different colors)
 * **Description**
 * **Due date** (if available)
-* **Edit** and 
-* **Delete** buttons
+* Task Actions **Edit** and 
+* Task Actions **Delete** buttons
 
 Example:
 
@@ -80,6 +80,16 @@ Example:
 ✅ `getStatusColor()` and `getPriorityColor()` are helper functions that pick a color based on the status or priority (for example, green for “Completed”, red for “High priority”, etc).
 
 ---
+### 🔹 5. Task Description and **Due date** (if available)
+```js
+              <p className="task-description">{task.description}</p>
+
+              {task.dueDate && (
+                <p className="task-due-date">
+                  Due: {new Date(task.dueDate).toLocaleDateString()}
+                </p>
+              )}
+```
 
 ### 🔹 5. Task Actions
 

@@ -18,7 +18,7 @@ const api = axios.create({
   },
 });
 
-// Task API calls export const authAPI = { }
+// Task API calls, e.g export const authAPI = { }
 export const taskAPI = {
   // Get all tasks
   getAllTasks: async () => {

@@ -1,7 +1,14 @@
+// const TaskForm = ({ isEdit }) => {  return ( ... );}; export default TaskForm;
+// useEffect(() => { ... }, [isEdit, id]);
+// const handleChange = (e) => { ... };
+// const handleSubmit = async (e) => { ... };
+
 
 // import necessary modules and components
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+//**`useNavigate()`** → React Router hook to redirect users
+//**`useParams()`** → Extracts URL parameters like the task’s ID (for editing).
 import { taskAPI } from '../services/api';
 import './TaskForm.css';
 
@@ -28,14 +35,14 @@ const TaskForm = ({ isEdit }) => {
     // Move fetchTask function inside useEffect
     const fetchTask = async () => {
       try {
-        const response = await taskAPI.getTask(id);
+        const response = await taskAPI.getTask(id); //It calls the backend `GET /api/tasks/:id` to fetch a single task.
         const task = response.data;
-        setFormData({
+        setFormData({ //It updates the form fields using `setFormData()`.
           title: task.title,
-          description: task.description || '',
+          description: task.description || '', //It handles missing description gracefully (`|| ''`).
           status: task.status,
           priority: task.priority,
-          dueDate: task.dueDate ? task.dueDate.split('T')[0] : '',
+          dueDate: task.dueDate ? task.dueDate.split('T')[0] : '', //It converts ISO date (e.g. `"2025-10-22T00:00:00Z"`) into a plain `"2025-10-22"` string for the HTML date input.
         });
       } catch (err) {
         setError('Failed to fetch task');
@@ -52,7 +59,7 @@ const TaskForm = ({ isEdit }) => {
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value, //dynamically updates the right field in `formData`
     });
   };
 
@@ -62,18 +69,18 @@ const TaskForm = ({ isEdit }) => {
     setLoading(true);
     setError(null);
 
-    // Validate required fields
+    // Validate required fields // try -> catch -> finally, if -> else
     try {
       if (isEdit) {
         await taskAPI.updateTask(id, formData);
       } else {
         await taskAPI.createTask(formData);
       }
-      navigate('/');
+      navigate('/'); // Redirect to TaskList after successful submission
     } catch (err) {
-      setError(err.response?.data?.error || 'Failed to save task');
+      setError(err.response?.data?.error || 'Failed to save task'); //Catches backend errors and shows them nicely.
     } finally {
-      setLoading(false);
+      setLoading(false); //Always disables the submit button after saving.
     }
   };
 
